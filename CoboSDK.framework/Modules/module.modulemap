@@ -1,0 +1,11 @@
+framework module CoboSDK {
+  umbrella header "CoboSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module CoboSDK.Swift {
+    header "CoboSDK-Swift.h"
+    requires objc
+}
