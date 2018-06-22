@@ -21,11 +21,11 @@ TODO
 ```
 
 ### 注册URL Scheme
-在Xcode中，选择工程设置项，选中`TARGETS`，打开`Info`标签页，点击`URL Types`中的`+`按钮添加新的URL Type。在`URL Schemes` 中填入应用的URL Scheme，URL Scheme应当尽可能唯一，建议使用`<Bundle ID>.cobo`。
+在Xcode中，选择工程设置项，选中`TARGETS`，打开`Info`标签页，点击`URL Types`中的`+`按钮添加新的URL Type。在`URL Schemes` 中填入应用的URL Scheme。URL Scheme应当尽可能唯一，建议使用`<Bundle ID>.cobo`。
 
 ![URL Types](Docs/url-types.png)
 
-注册URL Scheme到CoboSDK中
+注册URL Scheme到CoboSDK中，这里的URL Scheme应当与`URL Type`中添加的URL Scheme相同。
 ```swift
 CoboSDK.shared.setup(callbackScheme: <replace with your url scheme>)
 ```
