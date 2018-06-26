@@ -11,7 +11,7 @@ DApp开发者可以使用CoboSDK获取用户的ethereum账户地址，完成消�
 
 在你的`Podfile`中添加：
 ```ruby
-pod 'CoboSDK', :git => 'https://github.com/cobowallet/CoboSDK-iOS.git'
+pod 'CoboSDK'
 ```
 然后在终端中执行`$ pod install`
 
