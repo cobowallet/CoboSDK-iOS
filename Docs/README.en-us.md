@@ -1,39 +1,38 @@
+
 # CoboSDK-iOS
-CoboSDK帮助开发者通过[Cobo钱包](https://cobo.com/)进行ethereum交易的签名和发送。
-DApp开发者可以使用CoboSDK获取用户的ethereum账户地址，完成消息的签名和校验，发起交易、调用智能合约以及广播签名后的交易数据。从而省去了开发者自行实现用户私钥管理和钱包功能的工作。
+CoboSDK help develpers sign and broadcast ethereum transactions using [Cobo Wallet](https://cobo.com/).
+Dapp developers can use CoboSDK to get user's ethereum addresses, sign messages, validate the signature, send transaction and call contract. Without the needs of developing private key management and wallet functions.
 
-*其他语言：[English](Docs/README.en-us.md)
+## Get Started
 
-## 接入CoboSDK
-接入CoboSDK需要如下几个步骤：
-
-### 添加依赖
+### Add dependency
 
 - Cocoapods
 
-在你的`Podfile`中添加：
+Add the following line to your `Podfile`:
 ```ruby
 pod 'CoboSDK'
 ```
-然后在终端中执行`$ pod install`
+then run `$ pod install`.
 
 - Carthage
 ```
 TODO
 ```
 
-### 注册URL Scheme
-在Xcode中，选择工程设置项，选中`TARGETS`，打开`Info`标签页，点击`URL Types`中的`+`按钮添加新的URL Type。在`URL Schemes` 中填入应用的URL Scheme。URL Scheme应当尽可能唯一，建议使用`<Bundle ID>.cobo`。
+### Register URL Scheme for your app
+Open Xcode and click on you project, click on `TARGETS`, go to the `Info` tab and click on `+` button in `URL Types` section
+Enter a custom scheme name in `URL Schemes`. The scheme name should be as unique as possible.
 
 ![URL Types](Docs/url-types.png)
 
-注册URL Scheme到CoboSDK中，这里的URL Scheme应当与`URL Type`中添加的URL Scheme相同。
+Register the url scheme to CoboSDK:
 ```swift
 CoboSDK.shared.setup(callbackScheme: <replace with your url scheme>)
 ```
 
-### 添加```LSApplicationQueriesSchemes```
-在应用的```Info.plist```文件中，添加如下内容：
+### Add ```LSApplicationQueriesSchemes```
+Add the following lines to ```Info.plist``` file：
 ```xml
 <key>LSApplicationQueriesSchemes</key>
 <array>
@@ -43,17 +42,17 @@ CoboSDK.shared.setup(callbackScheme: <replace with your url scheme>)
 
 ![Info.plist](Docs/queries-schemes.png)
 
-### 接收返回结果
-实现`AppDelegate`中的`func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool`方法来接收返回的结果数据：
+### Handling callbacks
+In `AppDelegate`, implement `func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool` to handle callbacks:
 ```swift
 func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
     return CoboSDK.shared.application(app, open: url, options: options)
 }
 ```
 
-## 使用SDK
+## Usage
 
-### 签名消息
+### Sign message
 ```swift
 let message = "Hello Cobo!"
 CoboSDK.shared.signMessage(message: message) { result in
@@ -69,7 +68,7 @@ CoboSDK.shared.signMessage(message: message) { result in
 }
 ```
 
-### 发送交易
+### Send transaction
 ```swift
 let gasPrice = BigUInt(stringLiteral: "1000000000") // 1 Gwei
 let gasLimit = BigUInt(21000)
@@ -89,4 +88,4 @@ CoboSDK.shared.sendTransaction(transaction: tx, from: from) { result in
 }
 ```
 
-更多功能使用请参考```Example```工程。
+For more use cases please refer to the  ```Example``` project.
