@@ -24,7 +24,7 @@ TODO
 Open Xcode and click on you project, click on `TARGETS`, go to the `Info` tab and click on `+` button in `URL Types` section
 Enter a custom scheme name in `URL Schemes`. The scheme name should be as unique as possible.
 
-![URL Types](Docs/url-types.png)
+![URL Types](url-types.png)
 
 Register the url scheme to CoboSDK:
 ```swift
@@ -40,7 +40,7 @@ Add the following lines to ```Info.plist``` file：
 </array>
 ```
 
-![Info.plist](Docs/queries-schemes.png)
+![Info.plist](queries-schemes.png)
 
 ### Handling callbacks
 In `AppDelegate`, implement `func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool` to handle callbacks:
